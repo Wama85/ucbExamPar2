@@ -55,22 +55,19 @@ class MainActivity : ComponentActivity() {
                 val navController = rememberNavController()
                 val shouldNavigateToGithub = remember { mutableStateOf(false) }
 
-                // Manejar navegación a GitHub siempre
+
                 LaunchedEffect(shouldNavigateToGithub.value) {
                     if (shouldNavigateToGithub.value) {
-                        delay(500) // Esperar a que el NavHost esté listo
+                        delay(500)
 
-                        // Ir siempre a GitHub (sin login)
-                        navController.navigate(Screen.Github.route) {
-                            launchSingleTop = true
-                        }
+
                         println("DEBUG: Navegando directamente a GitHub")
 
                         shouldNavigateToGithub.value = false
                     }
                 }
 
-                // Verificar intent inicial al abrir la app
+
                 LaunchedEffect(Unit) {
                     val navigateTo = intent.getStringExtra("NAVIGATE_TO")
                     val notificationId = intent.getLongExtra("NOTIFICATION_ID", 0)
@@ -88,10 +85,10 @@ class MainActivity : ComponentActivity() {
 
     override fun onNewIntent(intent: Intent) {
         super.onNewIntent(intent)
-        // Manejar intent cuando la app ya está abierta
+
         val navigateTo = intent.getStringExtra("NAVIGATE_TO")
         if (navigateTo == "GITHUB") {
-            // Reiniciar la actividad para procesar la navegación
+
             val newIntent = Intent(this, MainActivity::class.java).apply {
                 putExtra("NAVIGATE_TO", "GITHUB")
                 flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
