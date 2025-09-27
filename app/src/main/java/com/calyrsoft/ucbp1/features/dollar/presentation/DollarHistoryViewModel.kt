@@ -24,7 +24,7 @@ class DollarHistoryViewModel(
                 val history = localDataSource.getAllOrderedByDate()
                 _historyState.value = history
             } catch (e: Exception) {
-                // Manejar error
+
             }
         }
     }
@@ -33,7 +33,7 @@ class DollarHistoryViewModel(
         viewModelScope.launch(Dispatchers.IO) {
             try {
                 localDataSource.deleteById(id)
-                loadHistory() // Recargar
+                loadHistory()
             } catch (e: Exception) {
 
             }

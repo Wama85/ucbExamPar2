@@ -39,10 +39,10 @@ class MoviesViewModel(
 
     fun toggleLike(movieId: Int) {
         viewModelScope.launch {
-            // 1. Actualiza en Room
+
             movieRepository.toggleLike(movieId)
 
-            // 2. Recarga desde Room / UseCase
+
             val result = getPopularMoviesUseCase()
             result.fold(
                 onSuccess = { movies ->

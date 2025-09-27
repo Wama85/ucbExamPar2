@@ -20,11 +20,11 @@ fun Movie.toEntity(): MovieEntity {
     return MovieEntity(
         id = id,
         title = title,
-        overview = overview,               // String → String? (ok)
+        overview = overview,
         posterPath = posterPath,
         backdropPath = backdropPath,
-        releaseDate = releaseDate,         // String → String (ok)
-        voteAverage = voteAverage,         // Double → Double? (ok)
+        releaseDate = releaseDate,
+        voteAverage = voteAverage,
         voteCount = voteCount,
         isLiked = isLiked
     )

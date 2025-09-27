@@ -33,7 +33,7 @@ fun MovieCard(
             modifier = Modifier.padding(12.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
-            // Imagen del poster
+
             Image(
                 painter = rememberAsyncImagePainter(movie.getFullPosterUrl()),
                 contentDescription = "Poster de ${movie.title}",
@@ -45,7 +45,7 @@ fun MovieCard(
 
             Spacer(modifier = Modifier.width(16.dp))
 
-            // Información de la película
+
             Column(
                 modifier = Modifier.weight(1f)
             ) {

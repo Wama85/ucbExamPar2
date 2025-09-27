@@ -8,7 +8,7 @@ import kotlinx.coroutines.flow.flow
 
 class ProfileRepositoryImpl : ProfileRepository {
     override fun getProfile(): Flow<Result<Profile>> = flow {
-        // Simulamos datos de perfil por ahora
+
 
         val profile = Profile(
             id = ProfileId("user_123"),

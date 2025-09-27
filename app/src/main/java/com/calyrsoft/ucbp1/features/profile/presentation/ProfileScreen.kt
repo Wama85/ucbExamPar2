@@ -98,10 +98,10 @@ fun ProfileScreen(
                 )
 
                 Spacer(modifier = Modifier.height(24.dp))
-               // En ProfileScreen.kt, agrega este botón después de la información del perfil:
 
 
-               //  Botón para ir a la pantalla del dólar
+
+
                 Button(
                     onClick = {
                         navController.navigate(Screen.Dollar.route)

@@ -14,24 +14,24 @@ class MovieRepositoryImpl(
 
     override suspend fun getPopularMovies(): Result<List<Movie>> {
         val remoteResult = remote.getPopularMovies().map { dtos ->
-            // Traer lo que ya existe en la base local
+
             val localMovies = local.getAll()
 
             dtos.map { dto ->
-                // Si ya estaba guardado en local, conserva su "isLiked"
+
                 val existing = localMovies.find { it.id == dto.id }
                 dto.toDomain().copy(isLiked = existing?.isLiked ?: false)
             }
         }
 
         if (remoteResult.isSuccess) {
-            // Guardar en Room con los likes conservados
+
             local.upsertAll(remoteResult.getOrNull().orEmpty())
-            // Devolver desde la base local (ya ordenado por isLiked)
+
             return runCatching { local.getAll() }
         }
 
-        // fallback a cache local si falla la red
+
         return runCatching { local.getAll() }
     }
 
