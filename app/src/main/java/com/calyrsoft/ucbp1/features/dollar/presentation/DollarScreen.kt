@@ -267,6 +267,6 @@ private fun formatDate(timestamp: Long): String {
     return try {
         SimpleDateFormat("dd/MM/yyyy HH:mm:ss", Locale.getDefault()).format(Date(timestamp))
     } catch (e: Exception) {
-        "Fecha inválida"
+        "Fecha inválida verificar"
     }
 }
